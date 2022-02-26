@@ -19,7 +19,11 @@ while True:
             for id, lm in enumerate(hand_lm.landmark):
                 hight, width, channel = img.shape
                 x, y = int(lm.x*width), int(lm.y*hight)
-                print(id, x, y)
+                if id==8:
+                    cv2.circle(
+                        img, (x,y), 8,
+                        (255,0,255), cv2.FILLED
+                    )
 
             mp_draw.draw_landmarks(img, hand_lm, mp_hand.HAND_CONNECTIONS)
 
