@@ -16,7 +16,12 @@ while True:
 
     if result.multi_hand_landmarks:
         for hand_lm in result.multi_hand_landmarks:
-            mp_draw.draw_landmarks(img, hand_lm)
+            for id, lm in enumerate(hand_lm.landmark):
+                hight, width, channel = img.shape
+                x, y = int(lm.x*width), int(lm.y*hight)
+                print(id, x, y)
+
+        mp_draw.draw_landmarks(img, hand_lm)
 
     cv2.imshow('Image', img)
     cv2.waitKey(1)
