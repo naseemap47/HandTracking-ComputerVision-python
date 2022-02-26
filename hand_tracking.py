@@ -6,6 +6,8 @@ cap = cv2.VideoCapture(0)
 mp_hand = mp.solutions.hands
 hand = mp_hand.Hands()
 
+mp_draw = mp.solutions.drawing_utils
+
 while True:
     success, img = cap.read()
 
@@ -14,8 +16,7 @@ while True:
 
     if result.multi_hand_landmarks:
         for hand_lm in result.multi_hand_landmarks:
-            for id, lm in enumerate(hand_lm.landmark):
-                print(id, lm)
+            mp_draw.draw_landmarks(img, hand_lm)
 
     cv2.imshow('Image', img)
     cv2.waitKey(1)
