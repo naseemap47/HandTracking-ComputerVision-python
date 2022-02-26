@@ -21,7 +21,7 @@ while True:
                 x, y = int(lm.x*width), int(lm.y*hight)
                 print(id, x, y)
 
-        mp_draw.draw_landmarks(img, hand_lm)
+            mp_draw.draw_landmarks(img, hand_lm, mp_hand.HAND_CONNECTIONS)
 
     cv2.imshow('Image', img)
     cv2.waitKey(1)
